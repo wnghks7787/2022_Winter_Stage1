@@ -1,7 +1,5 @@
 package handong.jh.calculator;
 
-import handong.jh.calculator.window.NumberButton;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,30 +15,41 @@ public class MainRunner extends JFrame {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
-        addButton(frame);
-//        JButton btn5 = new JButton("5");
-//        NumberButton btn5 = new NumberButton("5");
-//        btn5.setBounds(100, 100, 20, 30);
-//        frame.getContentPane().add(btn5);
-
-//        frame.pack();
+        addZeroButton(frame);
+        addNumberButton(frame);
+        makeLabel(frame, "4");
         frame.setVisible(true);
     }
 
-    static void addButton(JFrame frame)
+    static void addZeroButton(JFrame frame)
+    {
+        int width, height;
+        width = 20;
+        height = frame.getHeight() - BTN_SIZE - 50;
+
+        NumberButton btn = new NumberButton();
+
+        btn.setText(String.valueOf(0));
+        btn.setBounds(width, height, 140, 70);
+        frame.getContentPane().add(btn);
+        btn.setFont(btn.getFont().deriveFont(40.0f));
+    }
+    static void addNumberButton(JFrame frame)
     {
         int width, height;
 
         width = 20;
-        height = frame.getHeight() - BTN_SIZE - 50;
+        height = frame.getHeight() - BTN_SIZE - 120;
+
+        NumberButton[] btn = new NumberButton[9];
 
         for(int i = 0 ; i < 9 ; i++)
         {
-
-            JButton btn = new JButton(String.valueOf(i + 1));
-
-            btn.setBounds(width, height, 70, 70);
-            frame.getContentPane().add(btn);
+            btn[i] = new NumberButton();
+            btn[i].setText(String.valueOf(i + 1));
+            btn[i].setBounds(width, height, 70, 70);
+            frame.getContentPane().add(btn[i]);
+            btn[i].setFont(btn[i].getFont().deriveFont(40.0f));
 
             width += 70;
             if((i + 1) % 3 == 0)
@@ -49,5 +58,21 @@ public class MainRunner extends JFrame {
                 width = 20;
             }
         }
+    }
+
+    static void makeLabel(JFrame frame, String x)
+    {
+        int width, height;
+        width = 20;
+        height = 30;
+        JLabel label = new JLabel("0");
+        label.setOpaque(true);
+        label.setBackground(Color.GRAY);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+        label.setHorizontalAlignment(SwingConstants.RIGHT);
+        label.setFont(label.getFont().deriveFont(40.0f));
+
+        label.setBounds(width, height, frame.getWidth() - 40, 70);
+        frame.getContentPane().add(label);
     }
 }
