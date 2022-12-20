@@ -2,44 +2,68 @@ package handong.jh.calculator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainRunner extends JFrame {
 
     static final int BTN_SIZE = 70;
 
-    public static void main(String[] args) {
+    static String labelNumber = "0";
+    static String addNumber;
+    static JLabel label = new JLabel(labelNumber);
 
+    public static void main(String[] args) {
         JFrame frame = new JFrame("TEST");
-        frame.setSize(350, 450);
+        frame.setSize(330, 530);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
+        addOperatorButton(frame);
         addZeroButton(frame);
         addNumberButton(frame);
-        makeLabel(frame, "4");
+        addPointButton(frame);
+        addClearButton(frame);
+        addEqualButton(frame);
+        makeLabel(frame);
         frame.setVisible(true);
     }
 
     static void addZeroButton(JFrame frame)
     {
-        int width, height;
-        width = 20;
-        height = frame.getHeight() - BTN_SIZE - 50;
+        int x, y;
+        x = 20;
+        y = frame.getHeight() - BTN_SIZE - 50;
 
         NumberButton btn = new NumberButton();
 
         btn.setText(String.valueOf(0));
-        btn.setBounds(width, height, 140, 70);
+        btn.setBounds(x, y, BTN_SIZE * 2, BTN_SIZE);
         frame.getContentPane().add(btn);
         btn.setFont(btn.getFont().deriveFont(40.0f));
+
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn.numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
     }
+
     static void addNumberButton(JFrame frame)
     {
-        int width, height;
+        int x, y;
 
-        width = 20;
-        height = frame.getHeight() - BTN_SIZE - 120;
+        x = 20;
+        y = frame.getHeight() - BTN_SIZE - 120;
 
         NumberButton[] btn = new NumberButton[9];
 
@@ -47,25 +71,292 @@ public class MainRunner extends JFrame {
         {
             btn[i] = new NumberButton();
             btn[i].setText(String.valueOf(i + 1));
-            btn[i].setBounds(width, height, 70, 70);
+            btn[i].numValue = i + 1;
+            btn[i].setBounds(x, y, BTN_SIZE, BTN_SIZE);
             frame.getContentPane().add(btn[i]);
             btn[i].setFont(btn[i].getFont().deriveFont(40.0f));
 
-            width += 70;
+            x += 70;
             if((i + 1) % 3 == 0)
             {
-                height -= BTN_SIZE;
-                width = 20;
+                y -= BTN_SIZE;
+                x = 20;
             }
         }
+        btn[0].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[0].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+        btn[1].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[1].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+        btn[2].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[2].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+        btn[3].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[3].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+
+        btn[4].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[4].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+
+        btn[5].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[5].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+
+        btn[6].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[6].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+        btn[7].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[7].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+        btn[8].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn[8].numValue);
+
+                if(labelNumber.equals("0"))
+                    labelNumber = addNumber;
+                else
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
     }
 
-    static void makeLabel(JFrame frame, String x)
+    static void addPointButton(JFrame frame)
+    {
+        int x, y;
+        x = 160;
+        y = frame.getHeight() - BTN_SIZE - 50;
+
+        NumberButton btn = new NumberButton();
+
+        btn.setText(".");
+        btn.operator = ".";
+        btn.setBounds(x, y, BTN_SIZE, BTN_SIZE);
+        frame.getContentPane().add(btn);
+        btn.setFont(btn.getFont().deriveFont(40.0f));
+
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = String.valueOf(btn.operator);
+
+                labelNumber += addNumber;
+                label.setText(labelNumber);
+            }
+        });
+    }
+
+    static void addOperatorButton(JFrame frame)
+    {
+        int x, y;
+
+        x = BTN_SIZE * 3 + 20;
+        y = frame.getHeight() - BTN_SIZE - 50;
+
+        NumberButton[] btn = new NumberButton[9];
+
+        for(int i = 0 ; i < 4 ; i++) {
+            btn[i] = new NumberButton();
+
+            switch (i) {
+                case 0 -> btn[i].operator = "+";
+                case 1 -> btn[i].operator = "-";
+                case 2 -> btn[i].operator = "*";
+                case 3 -> btn[i].operator = "/";
+            }
+
+            btn[i].setText(btn[i].operator);
+            btn[i].setBounds(x, y, BTN_SIZE, BTN_SIZE);
+            frame.getContentPane().add(btn[i]);
+            btn[i].setFont(btn[i].getFont().deriveFont(40.0f));
+
+            y -= BTN_SIZE;
+        }
+
+        btn[0].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = btn[0].operator;
+
+                if(!labelNumber.equals("0"))
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+        btn[1].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = btn[1].operator;
+
+                if(!labelNumber.equals("0"))
+                    labelNumber += addNumber;
+                else
+                    labelNumber = addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+        btn[2].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = btn[2].operator;
+
+                if(!labelNumber.equals("0"))
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+        btn[3].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = btn[3].operator;
+
+                if(!labelNumber.equals("0"))
+                    labelNumber += addNumber;
+
+                label.setText(labelNumber);
+            }
+        });
+    }
+
+    static void addClearButton(JFrame frame)
+    {
+        int x, y;
+        x = 20;
+        y = frame.getHeight() - 50 - (BTN_SIZE * 5);
+
+        NumberButton btn = new NumberButton();
+
+        btn.setText("C");
+        btn.operator = "C";
+        btn.setBounds(x, y, BTN_SIZE, BTN_SIZE);
+        frame.getContentPane().add(btn);
+        btn.setFont(btn.getFont().deriveFont(40.0f));
+
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                labelNumber = "0";
+                label.setText(labelNumber);
+            }
+        });
+    }
+
+    static void addEqualButton(JFrame frame)
+    {
+        int x, y;
+        x = 20 + (BTN_SIZE * 3);
+        y = frame.getHeight() - 50 - (BTN_SIZE * 5);
+
+        NumberButton btn = new NumberButton();
+
+        btn.setText("=");
+        btn.operator = "=";
+        btn.setBounds(x, y, BTN_SIZE, BTN_SIZE);
+        frame.getContentPane().add(btn);
+        btn.setFont(btn.getFont().deriveFont(40.0f));
+
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                labelNumber = "0";
+                label.setText(labelNumber);
+            }
+        });
+    }
+
+    static void makeLabel(JFrame frame)
     {
         int width, height;
         width = 20;
         height = 30;
-        JLabel label = new JLabel("0");
+
         label.setOpaque(true);
         label.setBackground(Color.GRAY);
         label.setVerticalAlignment(SwingConstants.CENTER);
