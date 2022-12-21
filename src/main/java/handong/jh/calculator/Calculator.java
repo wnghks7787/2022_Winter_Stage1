@@ -15,6 +15,11 @@ public class Calculator {
             MainRunner.opFlag = true;
             return "제작자 임주환";
         }
+        if(str.charAt(str.length() - 1) == '+' || str.charAt(str.length() - 1) == '-' || str.charAt(str.length() - 1) == '*' || str.charAt(str.length() - 1) == '/')
+        {
+            MainRunner.opFlag = true;
+            return "불완전한 식";
+        }
         if(str.charAt(0) == '-')
         {
             minus = true;
