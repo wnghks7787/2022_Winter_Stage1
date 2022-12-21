@@ -20,7 +20,7 @@ public class MainRunner extends JFrame {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MyCalc");
-        frame.setSize(330, 530);
+        frame.setSize(320, 530);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
@@ -66,6 +66,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
     }
@@ -108,6 +109,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
         btn[1].addActionListener(new ActionListener() {
@@ -123,6 +125,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
         btn[2].addActionListener(new ActionListener() {
@@ -138,6 +141,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
         btn[3].addActionListener(new ActionListener() {
@@ -153,6 +157,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
 
@@ -169,6 +174,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
 
@@ -185,6 +191,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
 
@@ -201,6 +208,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
         btn[7].addActionListener(new ActionListener() {
@@ -216,6 +224,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
         btn[8].addActionListener(new ActionListener() {
@@ -231,6 +240,7 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
                 flag = false;
                 checkOp = false;
+                opFlag = false;
             }
         });
     }

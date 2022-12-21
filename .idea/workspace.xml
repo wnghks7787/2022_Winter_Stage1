@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b532a5ac-d599-4996-95d1-f95ac84bf4b8" name="Changes" comment="Build Calc with my Func">
+    <list default="true" id="b532a5ac-d599-4996-95d1-f95ac84bf4b8" name="Changes" comment="Update for bugs( 8+=? )">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handong/jh/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handong/jh/calculator/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handong/jh/calculator/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handong/jh/calculator/MainRunner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
       <updated>1671501387065</updated>
       <workItem from="1671501389285" duration="26713000" />
       <workItem from="1671550872917" duration="9165000" />
-      <workItem from="1671591091928" duration="11802000" />
+      <workItem from="1671591091928" duration="12619000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1671509672111</created>
@@ -92,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671608865919</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update for bugs( 8+=? )">
+      <created>1671609235145</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671609235145</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +122,8 @@
     <MESSAGE value="Add operator buttons" />
     <MESSAGE value="Do Basic Calculate" />
     <MESSAGE value="Build Calc with my Func" />
-    <option name="LAST_COMMIT_MESSAGE" value="Build Calc with my Func" />
+    <MESSAGE value="Update for bugs( 8+=?)" />
+    <MESSAGE value="Update for bugs( 8+=? )" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update for bugs( 8+=? )" />
   </component>
 </project>
