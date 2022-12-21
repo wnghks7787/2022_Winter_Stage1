@@ -15,6 +15,11 @@ public class Calculator {
             MainRunner.opFlag = true;
             return "제작자 임주환";
         }
+        if(str.equals("20220221"))
+        {
+            MainRunner.opFlag = true;
+            return "💜애기새내기들💜";
+        }
         if(str.charAt(str.length() - 1) == '+' || str.charAt(str.length() - 1) == '-' || str.charAt(str.length() - 1) == '*' || str.charAt(str.length() - 1) == '/')
         {
             MainRunner.opFlag = true;
