@@ -88,31 +88,57 @@ public class Calculator {
         }
 
         answer = strDouble.get(0).toString();
+        double tmpStr;
+        tmpStr = (double)Math.round(strDouble.get(0) * 1000000);
+        tmpStr = tmpStr / 1000000.0;
+        answer = Double.toString(tmpStr);
         if(isInteger(strDouble.get(0)))
         {
             double d = strDouble.get(0);
             int x = (int)d;
             answer = Integer.toString(x);
         }
-
-
-        // 에러 체크
-        System.out.println(answer);
-        if(strDouble.size() != 1)
-        {
-            System.out.println("ERROR in strDouble!");
-
-            for(int i = 0 ; i < strDouble.size() ; i++)
-                System.out.println(strDouble.get(i));
-        }
-        else if(!opStr.isEmpty())
-        {
-            System.out.println("ERROR in opStr!");
-
-            for(int i = 0 ; i < opStr.size() ; i++)
-                System.out.println(opStr.get(i));
-        }
         return answer;
+    }
+
+    public static String cosCalc(String str)
+    {
+        String ready = Calculation(str);
+        double answer = Math.cos(Math.toRadians(Double.parseDouble(ready)));
+
+        double tmpStr;
+        tmpStr = (double)Math.round(answer * 1000000) / 1000000;
+
+        return String.valueOf(tmpStr);
+    }
+
+    public static String sinCalc(String str)
+    {
+        String ready = Calculation(str);
+        double answer = Math.sin(Math.toRadians(Double.parseDouble(ready)));
+
+        double tmpStr;
+        tmpStr = (double)Math.round(answer * 1000000) / 1000000;
+
+        return String.valueOf(tmpStr);
+    }
+
+    public static String tanCalc(String str)
+    {
+        String ready = Calculation(str);
+
+        if(Double.parseDouble(str) % 90 == 0 && !(Double.parseDouble(str) == 0) && !(Double.parseDouble(str) % 180 == 0))
+        {
+            MainRunner.opFlag = true;
+            return "ERROR!!";
+        }
+        double answer = Math.tan(Math.toRadians(Double.parseDouble(ready)));
+        System.out.println(answer);
+
+        double tmpStr;
+        tmpStr = (double)Math.round(answer * 1000000) / 1000000;
+
+        return String.valueOf(tmpStr);
     }
 
     private static ArrayList<Double> strToDouble(String[] str)

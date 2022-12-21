@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 public class MainRunner extends JFrame {
 
-
     static final int BTN_SIZE = 70;
 
     static String labelNumber = "0";
@@ -20,10 +19,11 @@ public class MainRunner extends JFrame {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MyCalc");
-        frame.setSize(320, 530);
+        frame.setSize(BTN_SIZE * 5 + 40, 530);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
+        frame.setResizable(false);
 
         Calculator c = new Calculator();
 
@@ -37,6 +37,7 @@ public class MainRunner extends JFrame {
 
         addHexButton(frame);
         addBinButton(frame);
+        addTriangleButton(frame, c);
         frame.setVisible(true);
     }
 
@@ -262,7 +263,16 @@ public class MainRunner extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!checkPoint)
+                if(checkOp)
+                {
+                    addNumber = "0" + String.valueOf(btn.operator);
+
+                    labelNumber += addNumber;
+                    label.setText(labelNumber);
+
+                    checkPoint = true;
+                }
+                else if(!checkPoint)
                 {
                     addNumber = String.valueOf(btn.operator);
 
@@ -519,5 +529,89 @@ public class MainRunner extends JFrame {
 
         label.setBounds(width, height, frame.getWidth() - 40, 70);
         frame.getContentPane().add(label);
+    }
+
+
+    static void addTriangleButton(JFrame frame, Calculator c)
+    {
+        int x, y;
+
+        x = BTN_SIZE * 4 + 20;
+        y = frame.getHeight() - BTN_SIZE * 5 - 50;
+
+        NumberButton[] btn = new NumberButton[9];
+
+        for(int i = 0 ; i < 4 ; i++) {
+            btn[i] = new NumberButton();
+
+            switch (i) {
+                case 0 -> btn[i].operator = "SIN";
+                case 1 -> btn[i].operator = "COS";
+                case 2 -> btn[i].operator = "TAN";
+//                case 3 -> btn[i].operator = "/";
+            }
+
+            btn[i].setText(btn[i].operator);
+            btn[i].setBounds(x, y, BTN_SIZE, BTN_SIZE);
+            frame.getContentPane().add(btn[i]);
+            btn[i].setFont(btn[i].getFont().deriveFont(20.0f));
+
+            y += BTN_SIZE;
+        }
+
+        // SIN 함수
+        btn[0].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String calcStr = c.sinCalc(labelNumber);
+                labelNumber = calcStr;
+                label.setText(labelNumber);
+
+                flag = true;
+            }
+        });
+        // COS
+        btn[1].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String calcStr = c.cosCalc(labelNumber);
+                labelNumber = calcStr;
+                label.setText(labelNumber);
+
+                flag = true;
+            }
+        });
+        // * 연산자
+        btn[2].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String calcStr = c.tanCalc(labelNumber);
+                labelNumber = calcStr;
+                label.setText(labelNumber);
+
+                flag = true;
+            }
+        });
+        // / 연산자
+        btn[3].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addNumber = btn[3].operator;
+
+                if(!opFlag)
+                {
+                    if (checkOp)
+                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
+
+                    if (!labelNumber.equals("0"))
+                        labelNumber += addNumber;
+
+                    label.setText(labelNumber);
+                    flag = false;
+                    checkOp = true;
+                    checkPoint = false;
+                }
+            }
+        });
     }
 }
