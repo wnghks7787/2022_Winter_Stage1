@@ -12,20 +12,23 @@ public class MainRunner extends JFrame {
     static String labelNumber = "0";
     static String addNumber;
     static JLabel label = new JLabel(labelNumber);
+    static boolean flag = false;
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("TEST");
+        JFrame frame = new JFrame("MyCalc");
         frame.setSize(330, 530);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
+
+        Calculator c = new Calculator();
 
         addOperatorButton(frame);
         addZeroButton(frame);
         addNumberButton(frame);
         addPointButton(frame);
         addClearButton(frame);
-        addEqualButton(frame);
+        addEqualButton(frame, c);
         makeLabel(frame);
         frame.setVisible(true);
     }
@@ -48,12 +51,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn.numValue);
 
-                if(labelNumber.equals("0"))
+                if (labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
     }
@@ -88,12 +92,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[0].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
         btn[1].addActionListener(new ActionListener() {
@@ -101,12 +106,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[1].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
         btn[2].addActionListener(new ActionListener() {
@@ -114,12 +120,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[2].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
         btn[3].addActionListener(new ActionListener() {
@@ -127,12 +134,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[3].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
 
@@ -141,12 +149,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[4].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
 
@@ -155,12 +164,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[5].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
 
@@ -169,12 +179,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[6].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
         btn[7].addActionListener(new ActionListener() {
@@ -182,12 +193,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[7].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
         btn[8].addActionListener(new ActionListener() {
@@ -195,12 +207,13 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = String.valueOf(btn[8].numValue);
 
-                if(labelNumber.equals("0"))
+                if(labelNumber.equals("0") || flag)
                     labelNumber = addNumber;
                 else
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
     }
@@ -222,10 +235,13 @@ public class MainRunner extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addNumber = String.valueOf(btn.operator);
+                if(!(labelNumber.charAt(labelNumber.length() - 1) == '.'))
+                {
+                    addNumber = String.valueOf(btn.operator);
 
-                labelNumber += addNumber;
-                label.setText(labelNumber);
+                    labelNumber += addNumber;
+                    label.setText(labelNumber);
+                }
             }
         });
     }
@@ -266,6 +282,7 @@ public class MainRunner extends JFrame {
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
         btn[1].addActionListener(new ActionListener() {
@@ -279,6 +296,7 @@ public class MainRunner extends JFrame {
                     labelNumber = addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
         btn[2].addActionListener(new ActionListener() {
@@ -290,6 +308,7 @@ public class MainRunner extends JFrame {
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
         btn[3].addActionListener(new ActionListener() {
@@ -301,6 +320,7 @@ public class MainRunner extends JFrame {
                     labelNumber += addNumber;
 
                 label.setText(labelNumber);
+                flag = false;
             }
         });
     }
@@ -324,11 +344,12 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 labelNumber = "0";
                 label.setText(labelNumber);
+                flag = false;
             }
         });
     }
 
-    static void addEqualButton(JFrame frame)
+    static void addEqualButton(JFrame frame, Calculator c)
     {
         int x, y;
         x = 20 + (BTN_SIZE * 3);
@@ -345,8 +366,11 @@ public class MainRunner extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                labelNumber = "0";
+                String calcStr = c.Calculation(labelNumber);
+                labelNumber = calcStr;
                 label.setText(labelNumber);
+
+                flag = true;
             }
         });
     }
