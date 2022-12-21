@@ -38,6 +38,7 @@ public class MainRunner extends JFrame {
         addHexButton(frame);
         addBinButton(frame);
         addTriangleButton(frame, c);
+        addBirthButton(frame, c);
         frame.setVisible(true);
     }
 
@@ -541,14 +542,13 @@ public class MainRunner extends JFrame {
 
         NumberButton[] btn = new NumberButton[9];
 
-        for(int i = 0 ; i < 4 ; i++) {
+        for(int i = 0 ; i < 3 ; i++) {
             btn[i] = new NumberButton();
 
             switch (i) {
                 case 0 -> btn[i].operator = "SIN";
                 case 1 -> btn[i].operator = "COS";
                 case 2 -> btn[i].operator = "TAN";
-//                case 3 -> btn[i].operator = "/";
             }
 
             btn[i].setText(btn[i].operator);
@@ -581,7 +581,7 @@ public class MainRunner extends JFrame {
                 flag = true;
             }
         });
-        // * 연산자
+        // TAN
         btn[2].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -592,25 +592,30 @@ public class MainRunner extends JFrame {
                 flag = true;
             }
         });
-        // / 연산자
-        btn[3].addActionListener(new ActionListener() {
+    }
+
+    static void addBirthButton(JFrame frame, Calculator c)
+    {
+        int x, y;
+        x = 20 + (BTN_SIZE * 4);
+        y = frame.getHeight() - 50 - BTN_SIZE * 2;
+
+        NumberButton btn = new NumberButton();
+
+        btn.setText("🎂");
+        btn.operator = "🎂";
+        btn.setBounds(x, y, BTN_SIZE, BTN_SIZE * 2);
+        frame.getContentPane().add(btn);
+        btn.setFont(btn.getFont().deriveFont(40.0f));
+
+        btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addNumber = btn[3].operator;
+                String calcStr = c.birth(labelNumber);
+                labelNumber = calcStr;
+                label.setText(labelNumber);
 
-                if(!opFlag)
-                {
-                    if (checkOp)
-                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
-
-                    if (!labelNumber.equals("0"))
-                        labelNumber += addNumber;
-
-                    label.setText(labelNumber);
-                    flag = false;
-                    checkOp = true;
-                    checkPoint = false;
-                }
+                flag = true;
             }
         });
     }

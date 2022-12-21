@@ -1,5 +1,7 @@
 package handong.jh.calculator;
 
+import com.sun.tools.javac.Main;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,8 +10,18 @@ public class Calculator {
     static String answer;
     static boolean minus = false;
 
+    static ArrayList<String> birthArr = new ArrayList<>();
+
     public static String Calculation(String str)
     {
+        if(!(str.contains("+") || str.contains("-") || str.contains("*") || str.contains("/")))
+        {
+            if(birthArr.contains(str))
+            {
+                MainRunner.opFlag = true;
+                return "🥳HBD!!🎉";
+            }
+        }
         if(str.equals("21900616"))
         {
             MainRunner.opFlag = true;
@@ -158,5 +170,23 @@ public class Calculator {
     public static boolean isInteger(double number)
     {
         return Math.ceil(number) == Math.floor(number);
+    }
+
+    public static String birth(String str)
+    {
+        MainRunner.opFlag = true;
+
+        if(str.contains("+") || str.contains("-") || str.contains("*") || str.contains("/"))
+            return "ERROR!";
+        else if(!birthArr.contains(str))
+        {
+            birthArr.add(str);
+            return "SAVE!";
+        }
+        else
+        {
+            birthArr.remove(str);
+            return "REMOVE!";
+        }
     }
 }
