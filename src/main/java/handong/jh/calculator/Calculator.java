@@ -6,12 +6,23 @@ import java.util.Arrays;
 public class Calculator {
 
     static String answer;
+    static boolean minus = false;
 
     public static String Calculation(String str)
     {
+        if(str.equals("21900616"))
+        {
+            MainRunner.opFlag = true;
+            return "제작자 임주환";
+        }
+        if(str.charAt(0) == '-')
+        {
+            minus = true;
+            str = str.replaceFirst("-", "");
+        }
         String[] numStr = str.split("\\+|-|\\*|/");
-        String opString = str.replaceAll("[0-9]", "");
-        opString = opString.replace(".", "");
+        String opString = str.replaceAll("[a-f0-9]", "");
+        opString = opString.replaceAll("\\.", "");
         String[] opStrArray = opString.split("");
 
         ArrayList<String> opStr = new ArrayList<>(opStrArray.length);
@@ -19,9 +30,11 @@ public class Calculator {
         for(int i = 0 ; i < opStrArray.length ; i++)
             opStr.add(opStrArray[i]);
 
-//        ArrayList<Double> strDouble = new ArrayList<Double>(numStr.length);
         ArrayList<Double> strDouble;
         strDouble = strToDouble(numStr);
+
+        if(minus)
+            strDouble.set(0, strDouble.get(0) * (-1));
 
         // 우선순위(*, /) 먼저 처리
         for(int i = 0 ; i < opStr.size() ; i++)
@@ -37,6 +50,12 @@ public class Calculator {
             // 나누기(/) 처리
             else if(opStr.get(i).equals("/"))
             {
+
+                if(strDouble.get(i + 1) == 0)
+                {
+                    MainRunner.opFlag = true;
+                    return "ERROR!!!!";
+                }
                 strDouble.set(i, strDouble.get(i) / strDouble.get(i + 1));
                 strDouble.remove(i + 1);
                 opStr.remove(i);
@@ -67,8 +86,8 @@ public class Calculator {
         if(isInteger(strDouble.get(0)))
         {
             double d = strDouble.get(0);
-            Integer x = (int)d;
-            answer = x.toString();
+            int x = (int)d;
+            answer = Integer.toString(x);
         }
 
 
@@ -91,7 +110,7 @@ public class Calculator {
         return answer;
     }
 
-    private static ArrayList<Double> strToDouble(String str[])
+    private static ArrayList<Double> strToDouble(String[] str)
     {
         ArrayList<Double> strDouble = new ArrayList<Double>(str.length);
         for(int i = 0 ; i < str.length ; i++)
@@ -100,7 +119,8 @@ public class Calculator {
         return strDouble;
     }
 
-    public static boolean isInteger(double number){
+    public static boolean isInteger(double number)
+    {
         return Math.ceil(number) == Math.floor(number);
     }
 }

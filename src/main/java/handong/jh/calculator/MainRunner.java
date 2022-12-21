@@ -7,12 +7,16 @@ import java.awt.event.ActionListener;
 
 public class MainRunner extends JFrame {
 
+
     static final int BTN_SIZE = 70;
 
     static String labelNumber = "0";
     static String addNumber;
     static JLabel label = new JLabel(labelNumber);
     static boolean flag = false;
+    static boolean opFlag = false;
+    static boolean checkOp = false;
+    static boolean checkPoint = false;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MyCalc");
@@ -30,6 +34,9 @@ public class MainRunner extends JFrame {
         addClearButton(frame);
         addEqualButton(frame, c);
         makeLabel(frame);
+
+        addHexButton(frame);
+        addBinButton(frame);
         frame.setVisible(true);
     }
 
@@ -58,6 +65,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
     }
@@ -99,6 +107,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
         btn[1].addActionListener(new ActionListener() {
@@ -113,6 +122,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
         btn[2].addActionListener(new ActionListener() {
@@ -127,6 +137,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
         btn[3].addActionListener(new ActionListener() {
@@ -141,6 +152,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
 
@@ -156,6 +168,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
 
@@ -171,6 +184,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
 
@@ -186,6 +200,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
         btn[7].addActionListener(new ActionListener() {
@@ -200,6 +215,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
         btn[8].addActionListener(new ActionListener() {
@@ -214,6 +230,7 @@ public class MainRunner extends JFrame {
 
                 label.setText(labelNumber);
                 flag = false;
+                checkOp = false;
             }
         });
     }
@@ -235,12 +252,14 @@ public class MainRunner extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!(labelNumber.charAt(labelNumber.length() - 1) == '.'))
+                if(!checkPoint)
                 {
                     addNumber = String.valueOf(btn.operator);
 
                     labelNumber += addNumber;
                     label.setText(labelNumber);
+
+                    checkPoint = true;
                 }
             }
         });
@@ -251,7 +270,7 @@ public class MainRunner extends JFrame {
         int x, y;
 
         x = BTN_SIZE * 3 + 20;
-        y = frame.getHeight() - BTN_SIZE - 50;
+        y = frame.getHeight() - BTN_SIZE * 2 - 50;
 
         NumberButton[] btn = new NumberButton[9];
 
@@ -273,54 +292,91 @@ public class MainRunner extends JFrame {
             y -= BTN_SIZE;
         }
 
+        // + 연산자
         btn[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addNumber = btn[0].operator;
 
-                if(!labelNumber.equals("0"))
-                    labelNumber += addNumber;
+                if(!opFlag)
+                {
+                    if (checkOp)
+                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
 
-                label.setText(labelNumber);
-                flag = false;
+                    if (!labelNumber.equals("0"))
+                        labelNumber += addNumber;
+
+                    label.setText(labelNumber);
+                    flag = false;
+                    checkOp = true;
+                    checkPoint = false;
+                }
             }
         });
+        // - 연산자
         btn[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addNumber = btn[1].operator;
 
-                if(!labelNumber.equals("0"))
-                    labelNumber += addNumber;
-                else
-                    labelNumber = addNumber;
+                if (!opFlag)
+                {
 
-                label.setText(labelNumber);
-                flag = false;
+                    if (checkOp)
+                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
+
+                    if (!labelNumber.equals("0"))
+                        labelNumber += addNumber;
+                    else
+                        labelNumber = addNumber;
+
+                    label.setText(labelNumber);
+                    flag = false;
+                    checkOp = true;
+                    checkPoint = false;
+                }
             }
         });
+        // * 연산자
         btn[2].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addNumber = btn[2].operator;
 
-                if(!labelNumber.equals("0"))
-                    labelNumber += addNumber;
+                if(!opFlag)
+                {
+                    if (checkOp)
+                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
 
-                label.setText(labelNumber);
-                flag = false;
+                    if (!labelNumber.equals("0"))
+                        labelNumber += addNumber;
+
+                    label.setText(labelNumber);
+                    flag = false;
+                    checkOp = true;
+                    checkPoint = false;
+                }
             }
         });
+        // / 연산자
         btn[3].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addNumber = btn[3].operator;
 
-                if(!labelNumber.equals("0"))
-                    labelNumber += addNumber;
+                if(!opFlag)
+                {
+                    if (checkOp)
+                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
 
-                label.setText(labelNumber);
-                flag = false;
+                    if (!labelNumber.equals("0"))
+                        labelNumber += addNumber;
+
+                    label.setText(labelNumber);
+                    flag = false;
+                    checkOp = true;
+                    checkPoint = false;
+                }
             }
         });
     }
@@ -345,6 +401,8 @@ public class MainRunner extends JFrame {
                 labelNumber = "0";
                 label.setText(labelNumber);
                 flag = false;
+                opFlag = false;
+                checkPoint = false;
             }
         });
     }
@@ -353,7 +411,7 @@ public class MainRunner extends JFrame {
     {
         int x, y;
         x = 20 + (BTN_SIZE * 3);
-        y = frame.getHeight() - 50 - (BTN_SIZE * 5);
+        y = frame.getHeight() - 50 - BTN_SIZE;
 
         NumberButton btn = new NumberButton();
 
@@ -371,6 +429,68 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
 
                 flag = true;
+            }
+        });
+    }
+
+    static void addHexButton(JFrame frame)
+    {
+        int x, y;
+        x = 20 + BTN_SIZE;
+        y = frame.getHeight() - 50 - BTN_SIZE * 5;
+
+        NumberButton btn = new NumberButton();
+
+
+        btn.setBackground(Color.orange);
+        btn.setText("HEX");
+        btn.setBounds(x, y, BTN_SIZE, BTN_SIZE);
+        frame.getContentPane().add(btn);
+        btn.setFont(btn.getFont().deriveFont(20.0f));
+
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!opFlag)
+                {
+                    int num = Integer.parseInt(labelNumber);
+                    labelNumber = Integer.toHexString(num);
+                    label.setText(labelNumber);
+
+                    flag = true;
+                    opFlag = true;
+                }
+            }
+        });
+    }
+
+    static void addBinButton(JFrame frame)
+    {
+        int x, y;
+        x = 20 + BTN_SIZE * 2;
+        y = frame.getHeight() - 50 - BTN_SIZE * 5;
+
+        NumberButton btn = new NumberButton();
+
+
+        btn.setBackground(Color.orange);
+        btn.setText("Bin");
+        btn.setBounds(x, y, BTN_SIZE, BTN_SIZE);
+        frame.getContentPane().add(btn);
+        btn.setFont(btn.getFont().deriveFont(20.0f));
+
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!opFlag)
+                {
+                    int num = Integer.parseInt(labelNumber);
+                    labelNumber = Integer.toBinaryString(num);
+                    label.setText(labelNumber);
+
+                    flag = true;
+                    opFlag = true;
+                }
             }
         });
     }
