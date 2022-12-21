@@ -2,6 +2,7 @@ package handong.jh.calculator;
 
 import com.sun.tools.javac.Main;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -19,6 +20,7 @@ public class Calculator {
             if(birthArr.contains(str))
             {
                 MainRunner.opFlag = true;
+                MainRunner.label.setHorizontalAlignment(SwingConstants.CENTER);
                 return "🥳HBD!!🎉";
             }
         }

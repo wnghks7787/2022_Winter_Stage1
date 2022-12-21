@@ -69,6 +69,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
     }
@@ -112,6 +113,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
         btn[1].addActionListener(new ActionListener() {
@@ -128,6 +130,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
         btn[2].addActionListener(new ActionListener() {
@@ -144,6 +147,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
         btn[3].addActionListener(new ActionListener() {
@@ -160,6 +164,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
 
@@ -177,6 +182,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
 
@@ -194,6 +200,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
 
@@ -211,6 +218,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
         btn[7].addActionListener(new ActionListener() {
@@ -227,6 +235,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
         btn[8].addActionListener(new ActionListener() {
@@ -243,6 +252,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 checkOp = false;
                 opFlag = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
     }
@@ -272,6 +282,7 @@ public class MainRunner extends JFrame {
                     label.setText(labelNumber);
 
                     checkPoint = true;
+                    label.setHorizontalAlignment(SwingConstants.RIGHT);
                 }
                 else if(!checkPoint)
                 {
@@ -355,6 +366,7 @@ public class MainRunner extends JFrame {
                     flag = false;
                     checkOp = true;
                     checkPoint = false;
+                    label.setHorizontalAlignment(SwingConstants.RIGHT);
                 }
             }
         });
@@ -424,6 +436,7 @@ public class MainRunner extends JFrame {
                 flag = false;
                 opFlag = false;
                 checkPoint = false;
+                label.setHorizontalAlignment(SwingConstants.RIGHT);
             }
         });
     }
@@ -616,6 +629,8 @@ public class MainRunner extends JFrame {
                 label.setText(labelNumber);
 
                 flag = true;
+
+                label.setHorizontalAlignment(SwingConstants.CENTER);
             }
         });
     }
