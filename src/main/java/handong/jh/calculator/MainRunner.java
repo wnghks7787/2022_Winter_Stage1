@@ -25,20 +25,18 @@ public class MainRunner extends JFrame {
         frame.getContentPane().setLayout(null);
         frame.setResizable(false);
 
-        Calculator c = new Calculator();
-
         addOperatorButton(frame);
         addZeroButton(frame);
         addNumberButton(frame);
         addPointButton(frame);
         addClearButton(frame);
-        addEqualButton(frame, c);
+        addEqualButton(frame);
         makeLabel(frame);
 
         addHexButton(frame);
         addBinButton(frame);
-        addTriangleButton(frame, c);
-        addBirthButton(frame, c);
+        addTriangleButton(frame);
+        addBirthButton(frame);
         frame.setVisible(true);
     }
 
@@ -330,19 +328,7 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = btn[0].operator;
 
-                if(!opFlag)
-                {
-                    if (checkOp)
-                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
-
-                    if (!labelNumber.equals("0"))
-                        labelNumber += addNumber;
-
-                    label.setText(labelNumber);
-                    flag = false;
-                    checkOp = true;
-                    checkPoint = false;
-                }
+                opFlagAction();
             }
         });
         // - 연산자
@@ -376,19 +362,7 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = btn[2].operator;
 
-                if(!opFlag)
-                {
-                    if (checkOp)
-                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
-
-                    if (!labelNumber.equals("0"))
-                        labelNumber += addNumber;
-
-                    label.setText(labelNumber);
-                    flag = false;
-                    checkOp = true;
-                    checkPoint = false;
-                }
+                opFlagAction();
             }
         });
         // / 연산자
@@ -397,21 +371,25 @@ public class MainRunner extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addNumber = btn[3].operator;
 
-                if(!opFlag)
-                {
-                    if (checkOp)
-                        labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
-
-                    if (!labelNumber.equals("0"))
-                        labelNumber += addNumber;
-
-                    label.setText(labelNumber);
-                    flag = false;
-                    checkOp = true;
-                    checkPoint = false;
-                }
+                opFlagAction();
             }
         });
+    }
+
+    private static void opFlagAction() {
+        if(!opFlag)
+        {
+            if (checkOp)
+                labelNumber = labelNumber.substring(0, labelNumber.length() - 1);
+
+            if (!labelNumber.equals("0"))
+                labelNumber += addNumber;
+
+            label.setText(labelNumber);
+            flag = false;
+            checkOp = true;
+            checkPoint = false;
+        }
     }
 
     static void addClearButton(JFrame frame)
@@ -441,7 +419,7 @@ public class MainRunner extends JFrame {
         });
     }
 
-    static void addEqualButton(JFrame frame, Calculator c)
+    static void addEqualButton(JFrame frame)
     {
         int x, y;
         x = 20 + (BTN_SIZE * 3);
@@ -458,8 +436,7 @@ public class MainRunner extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String calcStr = c.Calculation(labelNumber);
-                labelNumber = calcStr;
+                labelNumber = Calculator.Calculation(labelNumber);
                 label.setText(labelNumber);
 
                 flag = true;
@@ -546,7 +523,7 @@ public class MainRunner extends JFrame {
     }
 
 
-    static void addTriangleButton(JFrame frame, Calculator c)
+    static void addTriangleButton(JFrame frame)
     {
         int x, y;
 
@@ -576,8 +553,7 @@ public class MainRunner extends JFrame {
         btn[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String calcStr = c.sinCalc(labelNumber);
-                labelNumber = calcStr;
+                labelNumber = Calculator.sinCalc(labelNumber);
                 label.setText(labelNumber);
 
                 flag = true;
@@ -587,8 +563,7 @@ public class MainRunner extends JFrame {
         btn[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String calcStr = c.cosCalc(labelNumber);
-                labelNumber = calcStr;
+                labelNumber = Calculator.cosCalc(labelNumber);
                 label.setText(labelNumber);
 
                 flag = true;
@@ -598,8 +573,7 @@ public class MainRunner extends JFrame {
         btn[2].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String calcStr = c.tanCalc(labelNumber);
-                labelNumber = calcStr;
+                labelNumber = Calculator.tanCalc(labelNumber);
                 label.setText(labelNumber);
 
                 flag = true;
@@ -607,7 +581,7 @@ public class MainRunner extends JFrame {
         });
     }
 
-    static void addBirthButton(JFrame frame, Calculator c)
+    static void addBirthButton(JFrame frame)
     {
         int x, y;
         x = 20 + (BTN_SIZE * 4);
@@ -624,8 +598,7 @@ public class MainRunner extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String calcStr = c.birth(labelNumber);
-                labelNumber = calcStr;
+                labelNumber = Calculator.birth(labelNumber);
                 label.setText(labelNumber);
 
                 flag = true;
