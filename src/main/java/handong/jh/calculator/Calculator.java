@@ -188,7 +188,7 @@ public class Calculator {
         else
         {
             birthArr.remove(str);
-            return "REMOVE!";
+            return "DELETE!";
         }
     }
 }
